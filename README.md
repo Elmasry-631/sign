@@ -1,29 +1,29 @@
-# Signature Module
+# Odoo 19 - Sale Signature Flow Module
 
-Implemented a basic signature workflow module matching the requested rules:
+هذا المستودع يحتوي الآن على موديول Odoo 19 باسم `odoo_signature_flow` يطبق المطلوب:
 
-- **Quotation**: 3 signatures
-  1. Sales person
-  2. Approver 1 (configurable)
-  3. Approver 2 (configurable)
-- **Sales Order**: 2 signatures
-  1. Company
-  2. Customer
+- **عرض السعر (Quotation)**: 3 توقيعات
+  1. مسؤول المبيعات
+  2. المعتمد الأول (من الإعدادات)
+  3. المعتمد الثاني (من الإعدادات)
+- **أمر البيع (Sales Order)**: توقيعان
+  1. الشركة (من الإعدادات)
+  2. العميل (Partner الطلب)
 
-## Run tests
+## المسارات الأساسية
 
-```bash
-python -m unittest discover -s tests -v
-```
+- `odoo_signature_flow/__manifest__.py`
+- `odoo_signature_flow/models/sale_order.py`
+- `odoo_signature_flow/models/res_company.py`
+- `odoo_signature_flow/models/res_config_settings.py`
+- `odoo_signature_flow/views/sale_order_views.xml`
+- `odoo_signature_flow/views/res_config_settings_views.xml`
 
-## Quick usage
+## ملاحظات تشغيل
 
-```python
-from signatures.module import build_quotation_document, build_sales_order_document
-
-quotation = build_quotation_document("sales-id", "approver1-id", "approver2-id")
-sales_order = build_sales_order_document("company-id", "customer-id")
-
-print(quotation.to_dict())
-print(sales_order.to_dict())
-```
+1. أضف الموديول إلى `addons_path` في Odoo 19.
+2. حدث قائمة التطبيقات ثم ثبّت `Sale Signature Flow`.
+3. من إعدادات المبيعات عيّن:
+   - Quotation Approver 1
+   - Quotation Approver 2
+   - Sales Order Company Signer

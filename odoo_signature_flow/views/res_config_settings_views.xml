@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_signature_flow" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.signature.flow</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='sale']" position="inside">
+                <block title="Signature Workflow">
+                    <setting string="Quotation Approver 1">
+                        <field name="quotation_approver_a_id"/>
+                    </setting>
+                    <setting string="Quotation Approver 2">
+                        <field name="quotation_approver_b_id"/>
+                    </setting>
+                    <setting string="Sales Order Company Signer">
+                        <field name="sales_order_company_signer_id"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
